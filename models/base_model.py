@@ -3,8 +3,8 @@ from datetime import datetime
 from uuid import uuid4
 import models
 
+
 class BaseModel:
-    
 
     def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
@@ -28,7 +28,7 @@ class BaseModel:
 
     def to_dict(self):
         """
-        returns a dictionary containing all 
+        returns a dictionary containing all
         keys/values of __dict__ of the instance
         """
         my_dict = {}
@@ -36,4 +36,3 @@ class BaseModel:
         for k, v in self.__dict__.items():
             my_dict[k] = v
         return my_dict
-
