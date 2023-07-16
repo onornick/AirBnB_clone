@@ -12,9 +12,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
-           "Place": Place, "Review": Review, "State": State, "User": User}
-
 
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
@@ -23,6 +20,9 @@ class FileStorage:
     __file_path = "file.json"
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
+
+    classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+           "Place": Place, "Review": Review, "State": State, "User": User}
 
     def all(self):
         """returns the dictionary __objects"""
@@ -47,8 +47,8 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as f:
                 jo = json.load(f)
-            for key, val  in jo.items():
-                obj = self.class_dict[val['__class__']](**val)
+            for key, val in jo.items():
+                obj = self.classes[val['__class__']](**val)
                 self.__objects[key] = obj
         except FileNotFoundError:
             pass
