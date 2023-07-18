@@ -17,7 +17,7 @@ class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
 
     # string - path to the JSON file
-    __file_path = "file.json"
+    __file_path = 'file.json'
     # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
 
@@ -51,4 +51,4 @@ class FileStorage:
                 obj = self.classes[val['__class__']](**val)
                 FileStorage.__objects[key] = obj
         except FileNotFoundError:
-            pass
+            print("File not found")
