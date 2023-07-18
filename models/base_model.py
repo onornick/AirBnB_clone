@@ -34,7 +34,7 @@ class BaseModel:
     def __str__(self):
         """ String """
         return ('[' + type(self).__name__ + '] (' + str(self.id) +
-               ') ' + str(self.__dict__))
+                ') ' + str(self.__dict__))
 
     def save(self):
         """ save function """
